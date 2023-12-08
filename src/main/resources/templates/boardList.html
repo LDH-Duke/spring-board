@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 목록</title>
+</head>
+<style>
+    .layout{
+        height:100vh;
+        width:100%;
+        display:flex;
+        justify-content:center;
+    }
+
+    .layout .wrap-table{
+        display:flex;
+        flex-direction:row;
+        justify-content:center;
+        width:35%;
+    }
+
+    .layout .table{
+        display:flex;
+        flex-direction:column;
+        justify-content:flex-start;
+        width:100%;
+    }
+
+    .layout table, th, td{
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+<div class="layout">
+    <div class="wrap-table">
+        <div class="table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>글 번호</th>
+                        <th>제목</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="board : ${list}">
+                        <td th:text="${board.id}">글 번호</td>
+                        <td><a th:text="${board.title}" th:href="@{/board/detail(id=${board.id})}"></a></td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
