@@ -9,7 +9,9 @@
         height:100vh;
         width:100%;
         display:flex;
-        justify-content:center;
+        flex-direction:column;
+        align-items:center;
+
     }
 
     .layout .wrap-table{
@@ -54,6 +56,17 @@
         </div>
 
     </div>
+    <div class="wrap-paging">
+        <th:block th:each="page : ${#numbers.sequence(startPage, endPage)}">
+            <a th:if="${page !=currentPage}" th:href="@{/board/list(page=${page-1}, searchkeyword = ${param.searchkeyword})}" th:text="${page}"></a>
+            <strong th:if="${page ==currentPage}"  th:text="${page}" style="color:red"></strong>
+        </th:block>
+    </div>
+    <form th:action="@{/board/list}" method="get">
+        <input type="text" name="searchkeyword">
+        <button type="submit">검색</button>
+
+    </form>
 
 </div>
 

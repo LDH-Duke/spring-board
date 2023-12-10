@@ -45,9 +45,10 @@
 <div class="layout">
     <div class="wrap-form">
         <div class="form">
-            <form action="/board/write" method="post">
+            <form action="/board/write" method="post" enctype="multipart/form-data">
                 <input name="title" type="text" >
                 <textarea name="content"></textarea>
+                <input name="file" type="file">
                 <button type="submit">완료</button>
             </form>
         </div>
